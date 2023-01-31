@@ -1,4 +1,6 @@
-class Person
+require "./nameable.rb"
+
+class Person < Nameable
   def initialize(age, _name = 'Unknown', _parent_permission: true)
     @id = Random.rand(1..100)
     @name = name
@@ -6,6 +8,10 @@ class Person
     @parent_permission = parent_permission
   end
 
+  def correct_name
+    @name
+  end
+  
   attr_accessor :name, :age
 
   attr_reader :id
