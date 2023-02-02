@@ -1,11 +1,13 @@
 require './book'
 require './student'
 require './teacher'
+require './rental'
 
 class App
     def initialize
         @books = []
         @people = []
+        @rentals = [] 
     end
 
     def create_student(age, name, parent_permission)
@@ -20,6 +22,11 @@ class App
         @books << Book.new(title, author)
     end
 
+    def create_rental(book_id, person_id, date)
+        person = find_person(person_id)
+        @rentals << Rental.new(@books[book_id], person, date)
+    end
+
     def list_people
         @people.each_with_index do |person, id|
             index = id + 1
@@ -32,5 +39,17 @@ class App
         index = id + 1
             puts "#{index} #{book.title}, #{book.author}"
         end
+    end
+
+    def list_person_rentals(id)
+        person = find_person(id)
+
+        person[:data].rentals.each do |rental|
+            puts "Date: #{rental.date}, Book: #{rental.book.title} written by: #{rental.book.author}"
+        end
+    end
+
+    private def find_person(p_id)
+        @people.find { |person| person[:data].id == p_id}
     end
 end

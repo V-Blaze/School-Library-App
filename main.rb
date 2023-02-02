@@ -45,6 +45,26 @@ def create_book(library)
     user_choice(library)
 end
 
+def create_rental(library)
+    puts "Select a Books from the book list below: "
+    library.list_books
+    
+    book_id = gets.chomp.to_i
+
+    puts "Select a person from the list below: Enter the person's ID: "
+    library.list_people
+
+    person_id = gets.chomp.to_i
+
+    print "Enter Date: "
+    date = gets.chomp
+
+    library.create_rental(book_id - 1, person_id, date)
+
+    puts "Rental created Suceefully!!"
+    user_choice(library)
+end
+
 def list_people(library)
     library.list_people
 
@@ -53,6 +73,17 @@ end
 
 def list_books(library)
     library.list_books
+
+    user_choice(library)
+end
+
+def list_rentals(library)
+    library.list_people
+    puts "Enter a person's ID: "
+
+    id = gets.chomp.to_i
+
+    library.list_person_rentals(id)
 
     user_choice(library)
 end
