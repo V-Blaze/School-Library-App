@@ -8,6 +8,13 @@ class App
         @people = []
     end
 
+    def create_student(age, name, parent_permission)
+        @people << {type: 'Student', data: Student.new(age, name, parent_permission)}
+    end
+
+    def create_teacher(age, name, spec)
+        @people << {type: 'Teacher', data: Teacher.new(age, spec, name)}
+    end
 
     def add_book(title,  author)
         @books << Book.new(title, author)

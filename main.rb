@@ -5,7 +5,34 @@ def welcome
     puts "Welcome to the School Library App"
 end
 
+def create_person(library)
+    print "Do you want to create a Student (1) or a teacher (2)?:"
 
+    input = gets.chomp.to_i
+
+    print "Name: "
+    name = gets.chomp
+
+    print "Age: "
+    age = gets.chomp.to_i
+
+    if input == 1
+        print "Has parent permission? y/n :"
+        permission = gets.chomp
+
+        library.create_student(age, name, permission == "y")
+    else
+        print "Enter Teachers specialization:"
+        spec = gets.chomp
+
+        library.create_teacher(age, name, spec)
+    end
+
+    puts input == 1 ? "Student created Successfuly!" : "Teacher created Successfuly!"
+
+    user_choice(library)
+
+end
 
 def create_book(library)
     puts "Enter book Title:"
@@ -18,6 +45,11 @@ def create_book(library)
     user_choice(library)
 end
 
+def list_people(library)
+    library.list_people
+
+    user_choice(library)
+end
 
 def list_books(library)
     library.list_books
