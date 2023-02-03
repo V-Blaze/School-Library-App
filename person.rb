@@ -28,8 +28,12 @@ class Person < Nameable
   end
 
   private
-
   def of_age?
     @age >= 18
   end
+  
 end
+
+person = Person.new("jh", 'Valentine', "true")
+result = person.can_use_services?
+puts result
