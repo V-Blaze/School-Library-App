@@ -25,7 +25,8 @@ class App
 
   def create_rental(book_id, person_id, date)
     person = find_person(person_id)
-    @rentals << Rental.new(@books[book_id], person, date)
+
+    @rentals << Rental.new(@books[book_id], person[:data], date)
   end
 
   def list_people
@@ -38,7 +39,7 @@ class App
   def list_books
     @books.each_with_index do |book, id|
       index = id + 1
-      puts "#{index} #{book.title}, #{book.author}"
+      puts "#{index} -- #{book.title}, #{book.author}"
     end
   end
 
