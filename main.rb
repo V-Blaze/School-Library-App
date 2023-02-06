@@ -1,8 +1,25 @@
 require './app'
 
+def process(choice, app)
+  case choice
+  when '1'
+    app.list_books
+  when '2'
+    app.list_people
+  when '3'
+    app.create_person
+  when '4'
+    app.create_book
+  when '5'
+    app.create_rental
+  when '6'
+    app.list_rentals
+  end
+end
+
 def main
   puts 'Welcome to the School Library App'
-  library = App.new
+  app = App.new
 
   prompt = "\n Please choose an option by entering a number:
     1 - List all Books
@@ -18,23 +35,9 @@ def main
     puts prompt
     choice = gets.chomp
 
-    case choice
-    when '1'
-      library.list_books
-    when '2'
-      library.list_people
-    when '3'
-      library.create_person
-    when '4'
-      library.create_book
-    when '5'
-      library.create_rental
-    when '6'
-      library.list_rentals
-    when '7'
-      # Exit
-      puts 'Thanks for for using this App'
-    end
+    puts 'Thanks for for using this App' if choice == '7'
+
+    process(choice, app)
   end
 end
 

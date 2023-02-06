@@ -97,10 +97,9 @@ class App
     if @people.empty?
       puts 'You have not Created any Person object'
     else
-      @people.each_with_index do |person, id|
+      @people.each_with_index do |p, id|
         index = id + 1
-        puts "#{index} - [#{person[:type]}] Name: #{person[:data].name}
-         Age: #{person[:data].age} ID: #{person[:data].id}"
+        puts "#{index} - [#{p[:type]}] Name: #{p[:data].name} Age: #{p[:data].age} ID: #{p[:data].id}"
       end
     end
   end
