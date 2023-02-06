@@ -30,16 +30,24 @@ class App
   end
 
   def list_people
-    @people.each_with_index do |person, id|
-      index = id + 1
-      puts "#{index} - [#{person[:type]}] Name: #{person[:data].name} Age: #{person[:data].age} ID: #{person[:data].id}"
+    if @people.empty?
+      puts "You have not Created any Person object"
+    else
+      @people.each_with_index do |person, id|
+        index = id + 1
+        puts "#{index} - [#{person[:type]}] Name: #{person[:data].name} Age: #{person[:data].age} ID: #{person[:data].id}"
+      end
     end
   end
 
   def list_books
-    @books.each_with_index do |book, id|
-      index = id + 1
-      puts "#{index} -- #{book.title}, #{book.author}"
+    if @books.empty?
+      puts "You haven't created any book yet"
+    else
+      @books.each_with_index do |book, id|
+        index = id + 1
+        puts "#{index} -- #{book.title}, #{book.author}"
+      end
     end
   end
 

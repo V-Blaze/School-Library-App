@@ -1,9 +1,5 @@
 require './app'
 
-def welcome
-  puts 'Welcome to the School Library App'
-end
-
 def create_person(library)
   print 'Do you want to create a Student (1) or a teacher (2)?:'
 
@@ -63,17 +59,17 @@ def create_rental(library)
   user_choice(library)
 end
 
-def list_people(library)
-  library.list_people
+# def list_people(library)
+#   library.list_people
 
-  user_choice(library)
-end
+#   user_choice(library)
+# end
 
-def list_books(library)
-  library.list_books
+# def list_books(library)
+#   library.list_books
 
-  user_choice(library)
-end
+#   user_choice(library)
+# end
 
 def list_rentals(library)
   library.list_people
@@ -86,7 +82,10 @@ def list_rentals(library)
   user_choice(library)
 end
 
-def list_options
+def main
+  puts 'Welcome to the School Library App'
+  library = App.new
+
   prompt = "\n Please choose an option by entering a number:
     1 - List all Books
     2 - List all people
@@ -94,38 +93,31 @@ def list_options
     4 - Create a book
     5 - Create a rental
     6 - List all rentals for a given person id
-    7 - Exit!
-    "
-  puts prompt
-end
+    7 - Exit!"
 
-def user_choice(library)
-  list_options
-  choice = gets.chomp.to_i
+  choice = 0
+  while choice != '7'
+    puts prompt
+    choice = gets.chomp
 
-  case choice
-  when 1
-    list_books(library)
-  when 2
-    list_people(library)
-  when 3
-    create_person(library)
-  when 4
-    create_book(library)
-  when 5
-    create_rental(library)
-  when 6
-    list_rentals(library)
+    case choice
+    when '1'
+      library.list_books
+    when '2'
+      library.list_people
+    when '3'
+      create_person(library)
+    when '4'
+      create_book(library)
+    when '5'
+      create_rental(library)
+    when '6'
+      list_rentals(library)
+    when '7'
+        # Exit
+      puts 'Thanks for for using this App'
+    end
   end
-
-  # Exit
-  puts 'Thanks for for using this App'
 end
 
-def main
-  library = App.new
-  user_choice(library)
-end
-
-welcome
 main
