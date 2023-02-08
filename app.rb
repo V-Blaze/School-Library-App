@@ -3,7 +3,16 @@ require './student'
 require './teacher'
 require './rental'
 
+# modules
+require_relative 'modules/preserve_book'
+require_relative 'modules/preserve_people'
+require_relative 'modules/preserve_rentals'
+
 class App
+  include PreserveBook
+  include PreservePeople
+  include PreserveRentals
+
   def initialize
     @books = []
     @people = []
@@ -118,9 +127,23 @@ class App
   def list_person_rentals(id)
     person = find_person(id)
 
+    puts 'This person does not have rentals' unless person[:data].rentals != []
+
     person[:data].rentals.each do |rental|
       puts "Date: #{rental.date}, Book: #{rental.book.title} written by: #{rental.book.author}"
     end
+  end
+
+  def save_data
+    save_books
+    save_people
+    save_rentals
+  end
+
+  def read_saved_data
+    @books.push(*read_book_file)
+    @people.push(*read_people_file)
+    @rentals.push(*read_rentals_file)
   end
 
   private
