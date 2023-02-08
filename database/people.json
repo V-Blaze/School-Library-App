@@ -1,1 +1,1 @@
-[{"name":65,"age":"jake","permission":"true"},{"name":75,"age":"yed","specialization":"tecaher"},{"name":545,"age":"bff","permission":"true"}]
+[{"name":"jake","age":65,"permission":"true"},{"name":"tecaher","age":75,"specialization":"yed"},{"name":"bff","age":545,"permission":"true"}]

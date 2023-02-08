@@ -8,7 +8,6 @@ class Rental
     @date = date
 
     @person = person
-    puts person
     person.rentals.push(self)
 
     @book = book
