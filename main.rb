@@ -17,9 +17,16 @@ def process(choice, app)
   end
 end
 
+def exit(app)
+  app.save_data
+  puts 'Thanks for for using this App'
+end
+
 def main
   puts 'Welcome to the School Library App'
   app = App.new
+
+  app.read_saved_data
 
   prompt = "\n Please choose an option by entering a number:
     1 - List all Books
@@ -35,7 +42,7 @@ def main
     puts prompt
     choice = gets.chomp
 
-    puts 'Thanks for for using this App' if choice == '7'
+    exit(app) if choice == '7'
 
     process(choice, app)
   end
